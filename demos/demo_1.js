@@ -1,7 +1,6 @@
-
+tell('formula class');
 
 var v3d = new V3D.View(90,90,200);
-v3d.tell('formula class');
 var v = v3d;
 // add basic grid
 v.addGrid(120, 20);
