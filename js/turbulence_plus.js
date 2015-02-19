@@ -232,11 +232,9 @@ Turbulence.Formula.prototype = {
 
         // --- for object rotation
         //r.y3y4o3 = Math.acos( ((p.y3.x - p.y4.x)*(p.o3.x - p.y4.x) + (p.y3.y - p.y4.y)*(p.o3.y - p.y4.y)) / (Math.sqrt(Math.pow((p.y3.x - p.y4.x),2) + Math.pow((p.y3.y - p.y4.y),2)) * Math.sqrt(Math.pow((p.o3.x - p.y4.x),2) + Math.pow((p.o3.y - p.y4.y),2))) );
-        //r.y4b4o3 = Math.acos( ((p.y4.x - p.b4.x)*(p.o3.x - p.b4.x) + (p.y4.y - p.b4.y)*(p.o3.y - p.b4.y)) / (Math.sqrt(Math.pow((p.y4.x - p.b4.x),2) + Math.pow((p.y4.y - p.b4.y),2)) * Math.sqrt(Math.pow((p.o3.x - p.b4.x),2) + Math.pow((p.o3.y - p.b4.y),2))) );
+        r.y3y4o3 = Math.acos( ((p.y3.x - p.y4.x)*tmp.x + (p.y3.y - p.y4.y)*tmp.y) / (Math.sqrt(Math.pow((p.y3.x - p.y4.x),2) + Math.pow((p.y3.y - p.y4.y),2)) * Math.sqrt(Math.pow(tmp.x,2) + Math.pow(tmp.y,2))) );
+        r.y4b4o3 = Math.acos( ((p.y4.x - p.b4.x)*(p.o3.x - p.b4.x) + (p.y4.y - p.b4.y)*(p.o3.y - p.b4.y)) / (Math.sqrt(Math.pow((p.y4.x - p.b4.x),2) + Math.pow((p.y4.y - p.b4.y),2)) * Math.sqrt(Math.pow((p.o3.x - p.b4.x),2) + Math.pow((p.o3.y - p.b4.y),2))) );
 
-	r.y3y4o3 = Math.acos( ((p.y3.x - p.y4.x)*tmp.x + (p.y3.y - p.y4.y)*tmp.y) / (Math.sqrt(Math.pow((p.y3.x - p.y4.x),2) + Math.pow((p.y3.y - p.y4.y),2)) * Math.sqrt(Math.pow(tmp.x,2) + Math.pow(tmp.y,2))) );
-	r.y4b4o3 = Math.acos( ((p.y4.x - p.b4.x)*tmp.x + (p.y4.y - p.b4.y)*tmp.y) / (Math.sqrt(Math.pow((p.y4.x - p.b4.x),2) + Math.pow((p.y4.y - p.b4.y),2)) * Math.sqrt(Math.pow(tmp.x,2) + Math.pow(tmp.y,2))) );
-	
         // o4
         r.y3y4o4 = this.angleDeg.y3y4o4*Turbulence.ToRad;
 
