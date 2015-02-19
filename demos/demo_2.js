@@ -114,7 +114,7 @@ function initObject(){
     geos['h1'] = pool.getMesh('serpent_high_norm').geometry;
     geos['h2'] = pool.getMesh('serpent_low_norm').geometry;
     geos['end'] = pool.getMesh('serpent_end').geometry;
-    geos['head'] = pool.geo('serpent_head');
+    geos['head'] = pool.getMesh('serpent_head').geometry;
 
     //---- add 48 formule
 
@@ -250,10 +250,6 @@ formula.prototype = {
 
                 this.snakeLink[1].position.set(p.x*this.mul, p.y*this.mul,this.pointsDecal[i]);
 
-                if(this.head!=null){
-                    this.head.position.set(p.x*this.mul, p.y*this.mul,this.pointsDecal[i]);
-                    this.head.rotation.z = -(p.r+(Math.PI/2))/2-(20*V3D.ToRad);
-                }
             }else if(name=='y5'){
                 //this.snakeLink[1].quaternion.copy(this.f.endQuaternion);
                 //this.snakeLink[1].rotation.copy(this.snakeLink[2].rotation);
@@ -360,9 +356,9 @@ formula.prototype = {
         n = n || 0;
         if(n==1 && t==1){
             m3 = new THREE.Mesh(geos['head'], headShader);
-            m3.rotation.y = Math.PI;
-            this.head = m3;
-            this.mesh.add(m3);
+            m.add(m3);
+			m3.rotation.y = -Math.PI/2;
+	    	m3.rotation.z = Math.PI*110/180;
         }else if(n==2 && t==1){
         	m3 = new THREE.Mesh(geos['end'], v.mats.c1);
             m.add(m3);
@@ -390,4 +386,3 @@ formula.prototype = {
         }
     }
 }
-
