@@ -210,8 +210,7 @@ var formula = function(pz, r, link, label, num){
 
     var n = 0;
     if(num==0) n=1;
-	else if(num == 46) n=2;
-    	     else if(num == 47) n=3;
+    else if(num == 47) n=2;
 
     this.snakeLink[0] = this.createSnakeLink('high_norm', n, 1-ex);
     this.snakeLink[1] = this.createSnakeLink('low_norm', n, 1-ex);
