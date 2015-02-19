@@ -298,7 +298,7 @@ LTH.Menu.prototype = {
 		this.main.setTextSize();
 	},
 	isDay:function(){
-		this.doc.getElementById('logo').src="./images/logo.gif";
+		this.doc.getElementById('logo').src="./images/logo.png";
 		this.main.styleType = 'day'; 
 		this.bn.innerHTML = 'N';
 		this.doc.body.className = '';
