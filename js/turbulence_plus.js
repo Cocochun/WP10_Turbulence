@@ -20,7 +20,7 @@ Turbulence.Formula = function(){
     this.rot = {};
     this.ta = {};
    // this.pNames = ['a1','a2','b1','b2','b3','y1','y2','y3','y4','y4a','o1','o2','o3','o4','b4','y5'];
-    this.pNames = ['a1','a2','b1','b2','b3','y1','y2','y3','y4','o1','o2','o3','o4','b4','y5','a1b1','b1y1','a2y1','a2o1','y1y2','b2y2','o1b2','y2o2','y2y3','b3y3','o2b3','y3o3','y3y4','b4y4','o3b4','y4o4','y4y5'];
+    this.pNames = ['a1','a2','b1','b2','b3','y1','y2','y3','y4','o1','o2','o3','o4','b4','y5'];
 
 
    // this.ya1 = new Turbulence.V3();
@@ -198,6 +198,7 @@ Turbulence.Formula.prototype = {
 
     	// --- for object rotation
     	//r.y2y3o2 = Math.acos( ((p.y2.x - p.y3.x)*(p.o2.x - p.y3.x) + (p.y2.y - p.y3.y)*(p.o2.y - p.y3.y)) / (Math.sqrt(Math.pow((p.y2.x - p.y3.x),2) + Math.pow((p.y2.y - p.y3.y),2)) * Math.sqrt(Math.pow((p.o2.x - p.y3.x),2) + Math.pow((p.o2.y - p.y3.y),2)) ) );
+ 
         r.y2y3o2 = Math.acos( ((p.y2.x - p.y3.x)*tmp.x + (p.y2.y - p.y3.y)*tmp.y) / (Math.sqrt(Math.pow((p.y2.x - p.y3.x),2) + Math.pow((p.y2.y - p.y3.y),2)) * Math.sqrt(Math.pow(tmp.x,2) + Math.pow(tmp.y,2)) ) );
     	r.y3b3o2 = Math.acos( ((p.y3.x - p.b3.x)*(p.o2.x - p.b3.x) + (p.y3.y - p.b3.y)*(p.o2.y - p.b3.y)) / (Math.sqrt(Math.pow((p.y3.x - p.b3.x),2) + Math.pow((p.y3.y - p.b3.y),2)) * Math.sqrt(Math.pow((p.o2.x - p.b3.x),2) + Math.pow((p.o2.y - p.b3.y),2)) ) );
 
@@ -269,7 +270,6 @@ Turbulence.Formula.prototype = {
         //this.endRotation.setFromQuaternion(this.endQuaternion);
         //p.y4.r = rr.z;
 
-
         // extra rotation --------------------
 
 //        if(this.looking == 'base')this.w1.set(p.y4.x, p.y4.y, -1.5);
@@ -294,23 +294,6 @@ Turbulence.Formula.prototype = {
         a.e = -r.b3y3y4 + r.y3y4o3 - r.b4y4o3;
         a.f = a.c + a.d - r.b3y3y4;
 
-        // apply rotation
-        p.a1.r = -r.a2a1b1 + pi;
-        p.b1.r = a.a;
-        p.b2.r = a.c - r.y2b2o1 - pi;
-        p.b3.r = a.c + a.d + r.y3b3o2;   
-        p.b4.r = a.c + a.d + a.e - r.y4b4o3 - pi;
-        p.o1.r = -r.y1a2o1 + r.a1a2y1 + pi;
-        p.o2.r = a.b - r.y1y2o2 + pi;
-        p.o3.r = a.c - r.b2y2y3 - r.y2y3o3;
-        p.o4.r = a.c + a.d - r.y3y4o4;//a.f + r.y3y4o4 + pi;
-        p.y1.r = r.a1a2y1 + pi;
-        p.y2.r = a.b;
-        p.y3.r = a.c - r.b2y2y3 - pi;
-        p.y4.r = a.f;
-        p.y4.r2 = a.c + a.d + a.e;
-	//p.y4a.r = a.c + a.d + a.e;
-        p.y5.r = a.c + a.d + a.e - r.b4y4y5 - pi;
 
 	// reference rotation_positions
 	p.a1b1.r = (-r.a2a1b1);
