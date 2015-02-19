@@ -31,7 +31,7 @@ function renderLoop(){
         uiClock.set(v.unDegrees(fs[0].f.rotation));
         var i = 48;
         while(i--){
-            if(i<47){
+            if(i<46){
                 target.set(fs[i+1].f.points.y4.x, fs[i+1].f.points.y4.y, -2);
                 fs[i].f.setW1(target);
             }
@@ -338,19 +338,15 @@ formula.prototype = {
         var t = 0;
         var m = new THREE.Group();
     	var m1, m2, m3, m4;
-        if(type=='high_norm' && n<3){
+        if(type=='high_norm'){
             t = 1;
             m1 = new THREE.Mesh(geos['c1'], centerShader);
-	    if(n==2){
-		m2 = new THREE.Mesh(geos['end'], v.mats.c1);
-	    }else if(n==0){
-		m2 = new THREE.Mesh(geos['h1'], centerMorphShader);
-	    }
-	    m1.add(m2);
+            m2 = new THREE.Mesh(geos['h1'], centerMorphShader);
+            m1.add(m2);
             //m2.rotation.x = -155 * Math.PI / 180; //(angle y3-y4-o4)
      	    m1.rotation.y = -Math.PI/2;
-	    m1.rotation.z = Math.PI/2;
-        } else if(type=='low_norm' && n==0){
+			m1.rotation.z = Math.PI/2;
+        } else if(type=='low_norm'){
             t = 2;
             m1 = new THREE.Mesh(geos['c2'], centerShader);
             m4 = new THREE.Mesh(geos['c2a'], centerShader);
@@ -358,8 +354,10 @@ formula.prototype = {
             m1.add(m4);
             this.lowAxe = m4;
             m4.add(m2);
-            m1.rotation.x = 0;
-	    m1.rotation.y = -Math.PI/2;
+            m1.rotation.x = (-138+90) * Math.PI / 180; //(angle b4-y4-y5 as 138deg)
+            //m4.rotation.y = Math.PI/2;
+			m1.rotation.y = -Math.PI/2;
+			//m1.rotation.z = -Math.PI/2;
         }
         n = n || 0;
         if(n==1 && t==1){
@@ -367,6 +365,10 @@ formula.prototype = {
             m3.rotation.y = Math.PI;
             this.head = m3;
             this.mesh.add(m3);
+        }else if(n==2 && t==2){
+            m3 = new THREE.Mesh(geos['end'], v.mats.c1);
+            m3.rotation.y = Math.PI;
+            m.add(m3);
         }
         m.add(m1);
         
