@@ -231,8 +231,8 @@ formula.prototype = {
 
         // for test
         this.snakeLink[2].position.set(this.f.points.y4.x*this.mul, this.f.points.y4.y*this.mul,0);
-        this.snakeLink[2].quaternion.copy(this.f.endQuaternion2);
-        this.snakeLink[2].rotation.z += this.f.points.y4.r2;
+        this.snakeLink[2].quaternion.copy(this.f.endQuaternion);
+        this.snakeLink[2].rotation.z += this.f.points.y4.r;
 
 
         // a trouver ??
@@ -351,7 +351,7 @@ formula.prototype = {
             this.lowAxe = m4;
             m4.add(m2);
             m1.rotation.x = 0;
-	   		m1.rotation.y = -Math.PI/2;
+            m1.rotation.y = -Math.PI*110/180;
         }
         n = n || 0;
         if(n==1 && t==1){
